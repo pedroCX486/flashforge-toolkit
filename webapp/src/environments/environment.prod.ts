@@ -1,0 +1,6 @@
+export const environment = {
+  production: true,
+  apiUrl: 'http://localhost',
+  apiPort: '81',
+  printerAddr: '192.168.0.101:8080'
+};

@@ -1,0 +1,34 @@
+{
+    "name": "flashforge-api",
+    "version": "1.0.0",
+    "description": "An Node.JS API for the Flashforge printers.",
+    "main": "flashforge.js",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.3"
+    },
+    "scripts": {
+        "start": "nodemon flashforge",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/pedrocx486/flashforge-toolkit.git"
+    },
+    "keywords": [
+        "flashforge",
+        "api",
+        "node",
+        "endpoint"
+    ],
+    "author": "pedrocx486",
+    "license": "WTFPL",
+    "bugs": {
+        "url": "https://github.com/pedrocx486/flashforge-toolkit/issues"
+    },
+    "homepage": "https://github.com/pedrocx486/flashforge-toolkit#readme"
+}

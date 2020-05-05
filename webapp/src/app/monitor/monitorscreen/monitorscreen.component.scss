@@ -1,0 +1,39 @@
+.stream-size {
+    width: 100%;
+    height: auto;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.logo > img {
+    width: 8rem;
+    height: auto;
+}
+
+.jumbotron {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.container {
+    margin-top: 2rem;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .col-7 {
+        min-width: 100%;
+    }
+
+    .col-5 {
+        margin-top: 2rem;
+        min-width: 100%;
+    }
+}
