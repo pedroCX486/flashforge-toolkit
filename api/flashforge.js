@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 const net = require('net');
 
-// ********* CUSTOMIZE THESE SETTINGS TO FIT YOUR SETUP ************ //
+// ********* CUSTOMIZE THESE SETTINGS BELOW TO FIT YOUR SETUP ************ //
 const apiPort = 81;
 const apiLogin = 'flashforge';
 const apiPwd = 'finder';
@@ -19,6 +19,7 @@ const apiPwd = 'finder';
 const printerIP = '192.168.0.101'; // Remember to set your printer an fixed IP addr in your router to avoid problems!
 const printerPort = 8899;
 let printerData = [];
+// ********* CUSTOMIZE THESE SETTINGS ABOVE TO FIT YOUR SETUP ************ //
 
 app.get('/requestData', (req, res, next) => {
 	printerData = [];

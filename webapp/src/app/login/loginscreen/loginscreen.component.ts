@@ -15,10 +15,10 @@ export class LoginScreenComponent implements OnInit {
 
   baseURL = environment.apiUrl + ':' + environment.apiPort;
 
-  username;
-  password;
+  username: string;
+  password: string;
   @ViewChild('passwordInput', { static: false }) passwordInput;
-  error;
+  error: any;
 
   ngOnInit(): void {
   }

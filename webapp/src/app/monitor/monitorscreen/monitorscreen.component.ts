@@ -16,6 +16,8 @@ export class MonitorScreenComponent implements OnInit {
 
   baseURL = environment.apiUrl + ':' + environment.apiPort;
   printerAddr = environment.printerAddr;
+  authorization: boolean;
+  isLoginEnabled = environment.enableLogin;
 
   // Status List
   // 0 = Connection Status
@@ -23,17 +25,15 @@ export class MonitorScreenComponent implements OnInit {
   // 2 = Print Progress
   // 3 = Nozzle Temperature
 
-  connectionStatus;
+  connectionStatus: any;
   printerData = [{ status: '' }];
   printerStatusList = ['MachineStatus: READY', 'MachineStatus: BUILDING_FROM_SD'];
   printerStatus = '...';
   printProgress = 0;
   nozzleTemperature = '...';
 
-  authorization;
-
   ngOnInit(): void {
-    if (!localStorage.getItem('login')) {
+    if (!localStorage.getItem('login') && this.isLoginEnabled) {
       this.router.navigateByUrl('/');
       return;
     } else {
@@ -78,7 +78,7 @@ export class MonitorScreenComponent implements OnInit {
     }
   }
 
-  getJSON(arg): Observable<any> {
+  getJSON(arg: string): Observable<any> {
     return this.http.get(arg);
   }
 }
