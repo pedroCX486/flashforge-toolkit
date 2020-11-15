@@ -1,9 +1,9 @@
 # Flashforge Toolkit
 
-An opensource Flashforge monitoring toolkit made in [Angular](https://github.com/angular/angular-cli) and [Node.js](https://nodejs.org).
+An opensource Flashforge monitoring toolkit made in [Angular](https://github.com/angular/angular-cli) and [Node.JS](https://nodejs.org).
 
 - Note: The Node.JS code is *trash*. Don't expose it to the open internet.  
-- Note 2: This project is pending some refacting to cleanup some crud and tidy up the interface. But it works as is.
+- Note 2: This project is pending some refactoring to cleanup some crud and tidy up the interface. But it works as is.
 
 ## Development
   
