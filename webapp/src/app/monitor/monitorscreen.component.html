@@ -10,14 +10,16 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-7">
-        <img class="stream-size" [attr.src]="'http://' + printerAddr + '/?action=stream'" />
+        <img class="stream-size" [attr.src]="'http://' + printerAddr + '/?action=stream'" *ngIf="!!printerStatus" />
       </div>
       <div class="col-5">
         <p>Connection Status: {{connectionStatus}}</p>
         <p>Printer Status: {{printerStatus}}</p>
         <p>Nozzle Temperature: {{nozzleTemperature}}</p>
-        <progressbar max="1000" [value]="printProgress" type="success" [striped]="true" [animate]="true">
-          <i>Print Progress: {{printProgress / 10}}%</i>
+        <p>Print Progress:
+          <ng-container *ngIf="!!printProgress">{{printProgress / 10}}%</ng-container>
+        </p>
+        <progressbar max="1000" [value]="printProgress" class="progress" type="success" [animate]="true">
         </progressbar>
       </div>
     </div>

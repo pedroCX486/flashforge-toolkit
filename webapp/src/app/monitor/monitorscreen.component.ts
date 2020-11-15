@@ -28,9 +28,9 @@ export class MonitorScreenComponent implements OnInit {
   connectionStatus: any;
   printerData = [{ status: '' }];
   printerStatusList = ['MachineStatus: READY', 'MachineStatus: BUILDING_FROM_SD'];
-  printerStatus = '...';
+  printerStatus = '';
   printProgress = 0;
-  nozzleTemperature = '...';
+  nozzleTemperature = '';
 
   ngOnInit(): void {
     if (!localStorage.getItem('login') && this.isLoginEnabled) {
@@ -48,7 +48,7 @@ export class MonitorScreenComponent implements OnInit {
   }
 
   getPrinterData(): void {
-    this.connectionStatus = this.connectionStatus ? 'Updating status...' : 'Connecting...';
+    this.connectionStatus = this.connectionStatus ? 'Fetching...' : 'Connecting...';
     this.getJSON(this.baseURL + '/flashforge/requestData').toPromise().then(t => {
       this.printerData = t as any;
       this.parseData();
@@ -67,7 +67,7 @@ export class MonitorScreenComponent implements OnInit {
       this.nozzleTemperature = this.printerData[3].status ?
         this.printerData[3].status.split(' ')[1].replace('T0:', '') + 'ºC' : 'Unknown Temperature';
     } else {
-      this.connectionStatus = 'Printer offline.';
+      this.connectionStatus = 'Printer offline. (No Response)';
     }
   }
 

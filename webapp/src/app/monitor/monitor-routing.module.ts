@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MonitorScreenComponent } from './monitorscreen/monitorscreen.component';
+import { MonitorScreenComponent } from './monitorscreen.component';
 
 
 const routes: Routes = [
