@@ -10,7 +10,7 @@ An opensource Flashforge monitoring toolkit made in [Angular](https://github.com
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/` or wait until the compiler opens a window. The app will automatically reload if you change any of the source files.
   
 ### API:
-Run `npm start` for a dev server with nodemon. Default port is `81`, it'll automatically reload if you change any of the source files (it uses nodemon).
+Run `npm start` for a dev server with nodemon. Default port is `8000`, it'll automatically reload if you change any of the source files (it uses nodemon).
   
 ## Build (WebApp)
 
