@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 
@@ -12,12 +11,10 @@ import { environment } from '@env/environment';
 })
 export class MonitorScreenComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   baseURL = environment.apiUrl + ':' + environment.apiPort;
   printerAddr = environment.printerAddr;
-  authorization: boolean;
-  isLoginEnabled = environment.enableLogin;
 
   // Status List
   // 0 = Connection Status
@@ -33,13 +30,6 @@ export class MonitorScreenComponent implements OnInit {
   nozzleTemperature = '';
 
   ngOnInit(): void {
-    if (!localStorage.getItem('login') && this.isLoginEnabled) {
-      this.router.navigateByUrl('/');
-      return;
-    } else {
-      this.authorization = true;
-    }
-
     this.getPrinterData();
 
     setInterval(() => {
@@ -49,10 +39,10 @@ export class MonitorScreenComponent implements OnInit {
 
   getPrinterData(): void {
     this.connectionStatus = this.connectionStatus ? 'Fetching...' : 'Connecting...';
-    this.getJSON(this.baseURL + '/flashforge/requestData').toPromise().then(t => {
-      this.printerData = t as any;
+    this.fetchData(this.baseURL + '/flashforge/requestData').toPromise().then((data: any) => {
+      this.printerData = data;
       this.parseData();
-    }).then().catch(t => {
+    }).catch(() => {
       this.printerData[0].status = '';
       this.parseData();
     });
@@ -71,14 +61,7 @@ export class MonitorScreenComponent implements OnInit {
     }
   }
 
-  logout(): void {
-    if (!!localStorage.getItem('login')) {
-      localStorage.removeItem('login');
-      this.router.navigate(['/'], { skipLocationChange: true });
-    }
-  }
-
-  getJSON(arg: string): Observable<any> {
-    return this.http.get(arg);
+  fetchData(url: string): Observable<any> {
+    return this.http.get(url);
   }
 }

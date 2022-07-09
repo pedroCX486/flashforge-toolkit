@@ -6,8 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost',
   apiPort: '81',
-  printerAddr: '192.168.0.101:8080',
-  enableLogin: false
+  printerAddr: '192.168.0.175:8080'
 };
 
 /*

@@ -1,27 +1,15 @@
-<div class="container">
-  <div style="padding-bottom: 8rem;">
-    <div class="logo float-left">
-      <img src="./assets/logo_flashforge.svg" />
-      <h3>Monitor</h3>
-    </div>
-    <button style="margin-top: 2rem;" type="button" class="btn btn-outline-danger float-right" (click)="logout()"
-      *ngIf="isLoginEnabled">Logout</button>
-  </div>
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-7">
-        <img class="stream-size" [attr.src]="'http://' + printerAddr + '/?action=stream'" *ngIf="!!printerStatus" />
-      </div>
-      <div class="col-5">
-        <p>Connection Status: {{connectionStatus}}</p>
-        <p>Printer Status: {{printerStatus}}</p>
-        <p>Nozzle Temperature: {{nozzleTemperature}}</p>
-        <p>Print Progress:
-          <ng-container *ngIf="!!printProgress">{{printProgress / 10}}%</ng-container>
-        </p>
-        <progressbar max="1000" [value]="printProgress" class="progress" type="success" [animate]="true">
-        </progressbar>
-      </div>
-    </div>
-  </div>
-</div>
+<img src="./assets/logo_flashforge.svg" />
+
+<br /> <br />
+
+<img class="stream-size" [attr.src]="'http://' + printerAddr + '/?action=stream'" *ngIf="!!printerStatus" />
+
+<br /><br />
+
+<p>Connection Status: {{connectionStatus}}</p>
+<p>Printer Status: {{printerStatus}}</p>
+<p>Nozzle Temperature: {{nozzleTemperature}}</p>
+<p>Print Progress:
+  <ng-container *ngIf="!!printProgress">{{printProgress / 10}}%</ng-container>
+</p>
+<progress max="1000" [value]="printProgress" class="progress"></progress>

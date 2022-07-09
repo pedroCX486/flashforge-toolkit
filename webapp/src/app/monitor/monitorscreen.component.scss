@@ -12,33 +12,3 @@
   width: 8rem;
   height: auto;
 }
-
-.jumbotron {
-  padding-top: 2rem;
-  padding-bottom: 4rem;
-  background-color: #a5a5a5;
-}
-
-.container {
-  margin-top: 2rem;
-}
-
-.progress {
-  background-color: lightgray !important;
-}
-
-p {
-  padding: 0;
-  margin: 0;
-}
-
-@media only screen and (max-width: 600px) {
-  .col-7 {
-    min-width: 100%;
-  }
-
-  .col-5 {
-    margin-top: 2rem;
-    min-width: 100%;
-  }
-}
