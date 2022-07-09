@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost',
-  apiPort: '81',
+  baseUrl: 'http://localhost:8000',
   printerAddr: '192.168.0.175:8080'
 };
 
