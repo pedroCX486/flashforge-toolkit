@@ -43,7 +43,7 @@ export class MonitorScreenComponent implements OnInit {
         this.parseData(data);
       },
       error: () => {
-        this.parseData({ status: '' });
+        this.parseData([{ status: '' }]);
       }
     });
   }
