@@ -8,13 +8,13 @@ app.use(express.json());
 app.use(cors());
 app.options('*', cors());
 
-// ********* CHANGE THESE SETTINGS TO FIT YOUR SETUP ************ //
-const apiPort = 8000;
-
-const printerIP = '192.168.0.175'; // Remember to give your printer an fixed IP addr in your router to avoid problems!
 const printerPort = 8899;
 let printerData = {};
-// ******************************* //
+
+// *** CHANGE THESE SETTINGS TO FIT YOUR SETUP *** //
+const apiPort = 8000; // The port this API runs on. Remember to point your front-end here.
+const printerIP = '192.168.0.175'; // Remember to give your printer an fixed IP addr in your router to avoid problems!
+// ********************************************** //
 
 app.get('/', async (_req, res) => {
 	try {
