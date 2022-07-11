@@ -2,15 +2,15 @@
 
 An opensource Flashforge monitoring toolkit made in [Angular](https://github.com/angular/angular-cli) and [Node.JS](https://nodejs.org).
 
-- Note: The Node.JS code is *trash*. Don't expose it to the open internet.  
+- Note: Don't expose the API to the open internet.
 
 ## Development
   
-### WebApp:
+### Monitor:
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/` or wait until the compiler opens a window. The app will automatically reload if you change any of the source files.
   
 ### API:
-Run `npm start` for a dev server with nodemon. Default port is `8000`, it'll automatically reload if you change any of the source files (it uses nodemon).
+Run `npm start` for a dev server. Default port is `8000`, it'll automatically reload if you change any of the source files (it uses nodemon).
   
 ## Build (WebApp)
 
@@ -18,7 +18,7 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 ## Contributing
 
-Just do a pull request!
+I'd rather not.
 
 ## License
 
