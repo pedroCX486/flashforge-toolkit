@@ -39,7 +39,7 @@ export class MonitorScreenComponent implements OnInit {
         this.extruderTemperature = data.extruderTemperature || 'Unknown Temperature';
       },
       error: () => {
-        this.connectionStatus = 'Printer offline. (No Response)';
+        this.connectionStatus = 'Monitor API offline. (No Response)';
       }
     });
   }
