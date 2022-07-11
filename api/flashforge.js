@@ -16,7 +16,7 @@ const printerPort = 8899;
 let printerData = {};
 // ******************************* //
 
-app.get('/', async (req, res) => {
+app.get('/', async (_req, res) => {
 	try {
 		printerData.printerConnection = await connectToPrinter();
 		printerData.printerStatus = await getPrinterStatus();
@@ -72,8 +72,7 @@ function getPrinterStatus() {
 
 	return new Promise((resolve) => {
 		client.on('data', function (data) {
-			console.log('Data returned:');
-			console.log(data.toString());
+			console.log(`Data returned:\n ${data.toString()}`);
 			client.destroy();
 			resolve(
 				data.toString().includes('MachineStatus: READY')
@@ -93,8 +92,7 @@ function getPrintProgress() {
 
 	return new Promise((resolve) => {
 		client.on('data', function (data) {
-			console.log('Data returned:');
-			console.log(data.toString());
+			console.log(`Data returned:\n ${data.toString()}`);
 			client.destroy();
 			resolve(Number(data.toString().split('byte ')[1].split('/')[0]));
 		});
@@ -110,8 +108,7 @@ function getExtruderTemperature() {
 
 	return new Promise((resolve) => {
 		client.on('data', function (data) {
-			console.log('Data returned:');
-			console.log(data.toString());
+			console.log(`Data returned:\n ${data.toString()}`);
 			client.destroy();
 			resolve(data.toString().split(' ')[2].replace('Received.\r\nT0:', '') + 'ºC');
 		});
