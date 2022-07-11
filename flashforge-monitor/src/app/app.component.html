@@ -1,4 +1,4 @@
-<img src="./assets/logo_flashforge.svg" />
+<img src="./assets/flashforge.webp" />
 
 <br /> <br />
 
@@ -7,9 +7,11 @@
 <br /><br />
 
 <p>Connection Status: {{ connectionStatus }}</p>
-<p>Printer Status: {{ printerStatus }}</p>
-<p>Extruder Temperature: {{ extruderTemperature }}</p>
-<p *ngIf="!!printProgress">
-  Print Progress: <ng-container>{{ printProgress / 10 }}%</ng-container>
-</p>
-<progress max="1000" [value]="printProgress" class="progress"></progress>
+<div *ngIf="!!printerStatus">
+  <p>Printer Status: {{ printerStatus }}</p>
+  <p>Extruder Temperature: {{ extruderTemperature }}</p>
+  <p *ngIf="!!printProgress">
+    Print Progress: <ng-container>{{ printProgress / 10 }}%</ng-container>
+  </p>
+  <progress max="1000" [value]="printProgress" class="progress"></progress>
+</div>
