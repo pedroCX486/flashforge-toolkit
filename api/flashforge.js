@@ -17,10 +17,14 @@ let printerData = {};
 // ******************************* //
 
 app.get('/', async (req, res) => {
-	printerData.printerConnection = await connectToPrinter();
-	printerData.printerStatus = await getPrinterStatus();
-	printerData.printProgress = await getPrintProgress();
-	printerData.extruderTemperature = await getExtruderTemperature();
+	try {
+		printerData.printerConnection = await connectToPrinter();
+		printerData.printerStatus = await getPrinterStatus();
+		printerData.printProgress = await getPrintProgress();
+		printerData.extruderTemperature = await getExtruderTemperature();
+	} catch (res) {
+		printerData.printerConnection = res;
+	}
 
 	console.log(printerData);
 
@@ -54,7 +58,7 @@ function connectToPrinter() {
 		client.on('error', function () {
 			console.log('Connection failed - ' + new Date());
 			client.destroy();
-			reject('Unknown connection error');
+			reject('Unknown connection error - Printer may be offline?');
 		});
 	});
 }
