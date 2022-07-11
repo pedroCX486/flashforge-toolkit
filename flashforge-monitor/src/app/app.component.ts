@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-  
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '@env/environment';
+import { IPrinterData } from '@shared/printerdata.interface';
 
 @Component({
-  selector: 'app-monitorscreen',
-  templateUrl: './monitorscreen.component.html',
-  styleUrls: ['./monitorscreen.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class MonitorScreenComponent implements OnInit {
-
+export class AppComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   printerAddr = environment.printerAddr;
 
-  connectionStatus: string;
+  connectionStatus: string | undefined;
   printerStatus = '';
   printProgress = 0;
   extruderTemperature = '';
