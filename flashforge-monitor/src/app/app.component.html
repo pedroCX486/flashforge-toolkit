@@ -1,19 +1,26 @@
 <div class="logo">
   <img src="./assets/flashforge.webp" />
+
+  <br />
+  <p class="subtitle">Flashforge Web Monitor</p>
 </div>
 
-<br /> <br />
+<div class="wrapper">
+  <div class="stream-side" *ngIf="!!printerStatus">
+    <img class="camera-stream" [attr.src]="'http://' + printerAddr + '/?action=stream'" />
+  </div>
 
-<img class="stream-size" [attr.src]="'http://' + printerAddr + '/?action=stream'" *ngIf="!!printerStatus" />
+  <div class="info-side">
+    <p>Connection Status: {{ connectionStatus }}</p>
 
-<br /><br />
+    <div *ngIf="!!printerStatus">
+      <p>Printer Status: {{ printerStatus }}</p>
+      <p>Extruder Temperature: {{ extruderTemperature }}</p>
 
-<p>Connection Status: {{ connectionStatus }}</p>
-<div *ngIf="!!printerStatus">
-  <p>Printer Status: {{ printerStatus }}</p>
-  <p>Extruder Temperature: {{ extruderTemperature }}</p>
-  <p *ngIf="!!printProgress">
-    Print Progress: <ng-container>{{ printProgress / 10 }}%</ng-container>
-  </p>
-  <progress max="1000" [value]="printProgress" class="progress"></progress>
+      <div class="print-progress" *ngIf="!!printProgress">
+        <p>Print Progress: {{ printProgress / 10 }}%</p>
+        <progress max="1000" [value]="printProgress" class="progress"></progress>
+      </div>
+    </div>
+  </div>
 </div>

@@ -10,14 +10,17 @@ import { IPrinterData } from '@shared/printerdata.interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  
   constructor(private http: HttpClient) { }
 
   printerAddr = environment.printerAddr;
 
-  connectionStatus: string | undefined;
+  connectionStatus = '';
   printerStatus = '';
   printProgress = 0;
   extruderTemperature = '';
+
+  isStreaming = true;
 
   ngOnInit(): void {
     this.getPrinterData();
@@ -28,13 +31,13 @@ export class AppComponent implements OnInit {
   }
 
   getPrinterData(): void {
-    this.connectionStatus = this.connectionStatus ? 'Fetching...' : 'Connecting...';
+    this.connectionStatus = !!this.connectionStatus ? 'Fetching...' : 'Connecting...';
     this.fetchData(environment.baseUrl).subscribe({
       next: (data: IPrinterData) => {
         this.connectionStatus = data.printerConnection;
-        this.printerStatus = data.printerStatus || '';
-        this.printProgress = data.printProgress || 0;
-        this.extruderTemperature = data.extruderTemperature || 'Unknown Temperature';
+        this.printerStatus = data.printerStatus;
+        this.printProgress = data.printProgress;
+        this.extruderTemperature = data.extruderTemperature;
       },
       error: () => {
         this.connectionStatus = 'Monitor API offline. (No Response)';
