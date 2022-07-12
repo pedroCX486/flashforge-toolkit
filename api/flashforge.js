@@ -9,7 +9,6 @@ app.use(cors());
 app.options('*', cors());
 
 const printerPort = 8899;
-let printerData = {};
 
 // *** CHANGE THESE SETTINGS TO FIT YOUR SETUP *** //
 const apiPort = 8000; // The port this API runs on. Remember to point your front-end here.
@@ -17,6 +16,8 @@ const printerIP = '192.168.0.175'; // Remember to give your printer an fixed IP 
 // ********************************************** //
 
 app.get('/', async (_req, res) => {
+	let printerData = {};
+
 	try {
 		printerData.printerConnection = await connectToPrinter();
 		printerData.printerStatus = await getPrinterStatus();
