@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8000',
+  baseUrl: 'http://192.168.0.100:8000',
   printerAddr: '192.168.0.175:8080'
 };
 

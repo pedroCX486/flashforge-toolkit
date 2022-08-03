@@ -6,8 +6,8 @@
 </div>
 
 <div class="wrapper">
-  <div class="stream-side" *ngIf="!!printerStatus">
-    <img class="camera-stream" [attr.src]="'http://' + printerAddr + '/?action=stream'" />
+  <div class="stream-side" *ngIf="!!printerStatus">  
+    <img *ngIf="isStreaming" alt="Camera Stream" class="camera-stream" [attr.src]="'http://' + printerAddr + '/?action=stream'" (error)="isStreaming = false"/>
   </div>
 
   <div class="info-side">
