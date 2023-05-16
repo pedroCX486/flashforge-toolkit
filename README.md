@@ -1,29 +1,60 @@
 # Flashforge Toolkit
 
-An opensource Flashforge monitoring toolkit made in [Angular](https://github.com/angular/angular-cli) and [Node.JS](https://nodejs.org).
+An small toolkit for Flashforge printers that contains a NestJS backend serving data and a static Vue3 front-end (showing that data and the printer's webcam) in a single package.
 
-- Note: Don't expose the API to the open internet.
+## Back-End Instructions
 
-## Development
-  
-### Monitor:
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/` or wait until the compiler opens a window. The app will automatically reload if you change any of the source files.
-  
-### API:
-Run `npm start` for a dev server. Default port is `8000`, it'll automatically reload if you change any of the source files (it uses nodemon).
-  
-## Build (WebApp)
+### Installation
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. If you wish to run the project inside a subfolder, run the command `npm run subfolder-build` to build it to run under the `\flashforge-monitor\` subfolder in your server. The webapp also has a lot of environment variables you might want to check out beforehand.
+```bash
+$ yarn install
+```
 
-## Contributing
+### Running the app
 
-I'd rather not.
+```bash
+# development
+$ yarn run start
 
-## License
+# watch mode
+$ yarn run start:dev
 
-Code licensed under the [WTFPL](http://www.wtfpl.net/txt/copying/). Icons are owned by the respective creators.
+# production mode
+$ yarn run start:prod
+```
 
-## TODO
+### Extra Info
 
-- Have an feature you want to request? You can open an issue.
+Inside the `app.service.ts` you can find where to put your printer's IP address (make sure it's a static IP set in your router!), that's all you need in order to start seeing data from your printer in the front-end.
+
+## Front-End Instructions
+
+### Installation
+
+**First** go inside the the flashforge-toolkit-client folder (or open it with another VSCode window), then run the commands below.
+
+```bash
+$ yarn install
+```
+
+### Running the app
+
+```bash
+$ yarn dev
+```
+
+### Building the app
+
+```bash
+$ yarn build
+```
+
+### Extra Info
+
+The code was made ugly on purpose so its easier to understand all it does. Everything in the app depends on the backend (you don't need to set IP addresses or anything, really, in there).
+
+**Warning**: Running it in real time with `yarn dev` will not deploy it to the backend (aka prod), so for any changes you need to deploy, run `yarn build`. The backend automatically picks it up from the front-end's `/dist` folder. No need to copy-paste.
+
+### License
+
+[ISC](https://opensource.org/license/isc-license-txt/)
