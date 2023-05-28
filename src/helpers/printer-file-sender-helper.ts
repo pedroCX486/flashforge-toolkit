@@ -1,7 +1,7 @@
 import { Socket } from "net";
 import crc32 from 'buffer-crc32';
 
-export function sendFileToPrinter(printerIP: string, printerPort: number, fileBuffer: Buffer, fileName: string): Promise<string> {
+export const sendFileToPrinter = (printerIP: string, printerPort: number, fileBuffer: Buffer, fileName: string): Promise<string> => {
   const fileSize = fileBuffer.length;
   const client = new Socket();
   let chunkCounter = 0;
@@ -11,7 +11,7 @@ export function sendFileToPrinter(printerIP: string, printerPort: number, fileBu
     client.write(`~M28 ${fileSize} 0:/user/${fileName.replace(/ /g, '_')}\r\n`); // Prepare Print
   });
 
-  function sendChunk(i: number) {
+  const sendChunk = (i: number) => {
     if (i >= fileBuffer.length) {
       // All chunks have been sent
       client.write('~M29\r\n'); //Save File
@@ -34,7 +34,10 @@ export function sendFileToPrinter(printerIP: string, printerPort: number, fileBu
     }
 
     client.write(chunk);
+    console.log(`Written: ${chunk}`)
     currentChunkIndex += 4080;
+
+    sendChunk(currentChunkIndex);
   }
 
   return new Promise((resolve, reject) => {
@@ -42,11 +45,7 @@ export function sendFileToPrinter(printerIP: string, printerPort: number, fileBu
       console.log(`Data: ${data}`);
 
       if (data.includes('M28 Received')) {
-        sendChunk(currentChunkIndex); // Send first chunk
-      }
-
-      if (data.includes('Data:') && data.includes('ok')) {
-        sendChunk(currentChunkIndex); // Wait until OK comes and send next chunk
+        sendChunk(currentChunkIndex); // Initiate chunk transfers
       }
     });
 
